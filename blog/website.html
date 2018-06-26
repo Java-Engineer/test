@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>网站</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Optometry Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="datas/select.js"></script>
+<script src="js/common.js"></script>
+<!-- //js -->
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+</head>
+	
+<body>
+<!-- header -->
+	<div id="header"></div>
+<!-- //header -->
+<!-- banner -->
+<!-- //banner -->
+<!-- blog -->
+	
+		<div class="container">
+			<div class="title space">常用网站</div>
+			<div id="content"></div>
+			<div class="clearfix"> </div>
+		</div>
+	
+<!-- //blog -->
+<!-- footer -->
+	<div id="footer"></div>
+<!--//footer-->
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" 
+							aria-hidden="true">×
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						提示信息
+					</h4>
+				</div>
+				<div class="modal-body">
+					暂未找到任何数据
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">
+						确定
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"> </script>
+	<script src="datas/website.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			dataInit();
+			//tagsInit();
+		});
+	
+		
+		
+	
+		
+		//数据初始化
+		function dataInit(){
+			var htm = [];
+			for(var i = 0 ; i < webType.length ; i++){
+			    htm.push('<div class="col-md-12">');
+				htm.push('<div class="webType">');
+				htm.push('<div class="webTit"><span></span><span></span><div>'+webType[i].type+'</div></div>');
+				htm.push('<div class="line"></div>');
+				htm.push('<div class="webs">');
+				for(var j = 0 ; j < webs.length ; j++){
+					if(webType[i].id==webs[j].type){
+						htm.push('<div class="col-md-2">');
+						htm.push('<a class="thumbnail" href="'+webs[j].webText+'" target="_blank">');
+						htm.push('<img src="'+webs[j].img+'" style="height:100px;" />');
+						htm.push('<div class="explain">'+webs[j].title+'</div>');
+						htm.push('</a>');
+						htm.push('</div>');
+					}
+				}
+				htm.push('</div>');
+				htm.push('</div>');
+				htm.push('</div>');					
+			}
+			$("#content").html(htm.join(" "));	
+		}
+		
+	</script>
+<!-- //for bootstrap working -->
+</body>
+</html>

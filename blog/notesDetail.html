@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>笔记</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Optometry Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="datas/select.js"></script>
+<script src="js/common.js"></script>
+<!-- //js -->
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+</head>
+	
+<body>
+<!-- header -->
+	<div id="header"></div>
+<!-- //header -->
+<!-- banner -->
+<!-- //banner -->
+<!-- blog -->
+	
+		<div class="container">
+			<div class="col-md-12 blog-left" id="notes">
+
+			</div>			
+			<div class="clearfix"> </div>
+		</div>
+	
+<!-- //blog -->
+<!-- footer -->
+	<div id="footer"></div>
+<!--//footer-->
+<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"> </script>
+	<script src="datas/notes.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var htm = [];
+			var i = getQueryString("index");
+			var content = notes[i].content.split('*').join('</br>');
+			content = content.replace(/#!/g,'<div class="tit">');
+			content = content.replace(/#！/g,'<div class="tit">');
+			content = content.replace(/!#/g,'</div>');
+			content = content.replace(/！#/g,'</div>');
+			htm.push('<div class="blog-left-grid">');
+			htm.push('<h4>'+notes[i].title+'</h4>');
+			htm.push('<ul>');
+			htm.push('<li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>'+notes[i].time+'</li>');
+			htm.push('<li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>'+notes[i].num+'</a></li>');
+			htm.push('<li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>'+notes[i].user+'</a></li>');
+			htm.push('<li><a href="#"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>'+tags[notes[i].tags].text+'</a></li>');
+			htm.push('</ul>');
+			htm.push('<p>'+content+'</p>');					
+			htm.push('</div>');			
+			$("#notes").html(htm.join(" "));
+		});
+		/**获得URL参数*/
+		function getQueryString(name) { 
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+			var r = window.location.search.substr(1).match(reg); 
+			if (r != null) return unescape(r[2]); return null; 
+		} 
+	</script>
+<!-- //for bootstrap working -->
+</body>
+</html>

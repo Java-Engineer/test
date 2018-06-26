@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	
+		<title>css 实现阴影效果</title>
+		<meta name="description" content="Restyling jQuery UI Widgets and Elements" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	</head>	
+	<style type="text/css">	
+	body,ul{
+		margin:0px;
+		padding:0px;
+		list-style:none;
+	}
+	.ware{
+		margin:20px auto;
+		width:70%;
+		height:200;
+		background:white;
+	}
+	.ware h1{
+		text-align:center;
+		line-height:200px;
+	}
+	.shadow{
+		position:relative;
+		-webkit-box-shadow:0px 4px 10px rgba(0,0,0,0.3),0px 0px 10px rgba(0,0,0,0.3) inset;
+		box-shadow:0px 4px 10px rgba(0,0,0,0.3),0px 0px 10px rgba(0,0,0,0.3) inset;
+	
+	}
+	.shadow:before,.shadow:after{
+		content:'';	
+		background:red;		
+		position:absolute;
+		z-index:-1;
+		top:50%;
+		left:10px;
+		bottom:0px;
+		right:10px;
+		-webkit-box-shadow:0px 0px 20px rgba(0,0,0,0.8);
+		box-shadow:0px 0px 20px rgba(0,0,0,0.8);
+		border-radius:100px/10px;
+	
+	}
+	.box{
+		
+		width:80%;
+		height:auto;
+		clear:both;
+		overflow:hidden;
+		margin-left:10%;
+		margin-right:10%;
+		text-align:center;
+		
+	}
+	.box li{	
+		position:relative;
+		width:300px;
+		height:210px;
+		background:white;
+		float:left;
+		margin:20px 10px;
+		border:2px solid #efefef;
+		-webkit-box-shadow:0px 1px 4px rgba(0,0,0,0.3);
+		box-shadow:0px 1px 4px rgba(0,0,0,0.3);
+		
+	}
+	.box li img{
+		display:block;
+		width:290px;
+		height:200px;
+		margin:5px;
+	}
+	.box li:before{
+		content:'';
+		position:absolute;
+		z-index:-2;
+		width:90%;
+		height:80%;
+		left:20px;
+		bottom:8px;
+		-webkit-box-shadow:0px 8px 20px rgba(0,0,0,0.6);
+		box-shadow:0px 8px 20px rgba(0,0,0,0.6);
+		transform:skew(-12deg) rotate(-4deg);
+	}
+	.box li:after{
+		content:'';
+		position:absolute;
+		z-index:-1;
+		width:90%;
+		height:80%;
+		right:20px;
+		bottom:8px;
+		-webkit-box-shadow:0px 8px 20px rgba(0,0,0,0.6);
+		box-shadow:0px 8px 20px rgba(0,0,0,0.6);
+		transform:skew(12deg) rotate(4deg);
+	}
+	</style>
+	<body>
+	<div class="ware shadow">
+		<h1>CSS3 实现曲线阴影和翘边阴影</h1>		
+	</div>	
+	<ul class="box">
+		<li><img src="http://e.hiphotos.baidu.com/image/pic/item/a9d3fd1f4134970ac4149dee9ccad1c8a6865d88.jpg"></li>
+		<li><img src="http://d.hiphotos.baidu.com/image/pic/item/d4628535e5dde711ab193336aeefce1b9c166122.jpg"></li>
+		<li><img src="http://b.hiphotos.baidu.com/image/pic/item/32fa828ba61ea8d39c5a09c49e0a304e241f58f1.jpg"></li>
+	</ul>
+	</body>
+</html>

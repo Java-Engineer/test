@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		
+		<title>CSS 实现图片特效</title>
+		<style type="text/css">
+		body,h2,figure,p,figcaption{margin:0px;padding:0px}	
+		figure{position:relative;width:33.33%;overflow:hidden;height:350px;float:left}
+		figcaption{position:absolute;top:0px;left:0px;color:#00caca;font-family:"微软雅黑"}
+		figure img{opacity:0.8;transition:all 0.5s;}
+		figure figcaption p,h2,span,div {transition:all 0.5s;}		
+		
+		.demo1{background:#ffe66f}
+		.demo1 figcaption{width:100%;height:100%}
+		.demo1 figcaption h2{margin-left:15%;margin-top:15%}
+		.demo1 figcaption p{background:#00caca;color:#fff;margin:5px;margin-left:15%;width:150px;text-align:center;transform:translate(-300px,0px)}
+		.demo1 figcaption p:nth-of-type(1){transition-delay:0.1s}
+		.demo1 figcaption p:nth-of-type(2){transition-delay:0.2s}
+		.demo1 figcaption p:nth-of-type(3){transition-delay:0.3s}
+		.demo1:hover figcaption p{transform:translate(0px,0px)}
+		.demo1:hover img{transform:translate(-50px,0px);opacity:0.6}
+		
+		.demo2{background:#ffe66f}
+		.demo2 figcaption{width:100%;height:100%}
+		.demo2 figcaption h2{margin-left:15%;margin-top:15%}
+		.demo2 figcaption p{margin-left:15%;opacity:0;transform:translate(0px,50px)}
+		.demo2 figcaption div{border:2px solid #fff;width:80%;height:80%;position:absolute;top:10%;left:10%;
+		transform:translate(0px,-350px) rotate(0deg)}
+		.demo2:hover figcaption div{transform:translate(0px,0px) rotate(360deg)}
+		.demo2:hover figcaption p{opacity:1;transform:translate(0px,0px)}
+		.demo2:hover img{transform:translate(0px,-50px);opacity:0.6}
+		
+		.demo3{background:#ffe66f}
+		.demo3 figcaption{width:100%;height:100%}
+		.demo3 figcaption h2{margin-left:15%;margin-top:15%}
+		.demo3 figcaption p{margin-left:15%;transform:scale(1.3,1.3);opacity:0}
+		.demo3 figcaption div{border:2px solid #fff;width:80%;height:80%;position:absolute;top:10%;left:10%;
+		transform:scale(1.3,1.3);opacity:0}
+		.demo3:hover figcaption div{transform:scale(1,1);opacity:1}
+		.demo3:hover figcaption p{transform:scale(1,1);opacity:1}
+		.demo3:hover img{transform:scale(1.2,1.2);opacity:0.6}
+		
+		.demo4{background:#ffe66f}
+		.demo4 figcaption{width:100%;height:100%}
+		.demo4 figcaption h2{margin-left:15%;margin-top:15%;height:15%}
+		.demo4 figcaption p{position:absolute;top:88%;left:45%;opacity:0;color:#fff;z-index:99}
+		
+		.demo4 figcaption div{background-color:#00caca;width:150%;height:100%;position:absolute;top:100%;left:0px;opacity:0.6}
+		.demo4:hover img{transform:translate(0px,-50px);opacity:0.6}
+		.demo4:hover figcaption p{opacity:1}
+		.demo4:hover figcaption div{transform:rotate(-15deg);transform-origin: 0px 0px;}
+		<!-- 分布式布局-->
+		@media screen and (min-width:1001px){
+			figure{width:33.33%}
+		}		
+		@media screen and (min-width:601px) and (max-width:1000px){
+			figure{width:50%}
+		}
+		@media screen and (max-width:600px){
+			figure{width:100%}
+		}
+		</style>
+		
+	</head>
+	<body>	
+	<h1>CSS3 实现分布式布局与动画特效</h1>
+	<figure class="demo1">
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507704365549&di=be0af20e8b0d5b056796b539f2d056d5&imgtype=0&src=http%3A%2F%2Fimg.sc115.com%2Fuploads%2Fsc%2Fjpgs%2F1507%2Fapic12948_sc115.com.jpg">
+		<figcaption>
+			<h2>延时加载</h2>
+			<p>延时加载1</p>
+			<p>图片描述延时加载2</p>
+			<p>延时加载3</p>
+		</figcaption>
+	</figure>
+	
+	<figure class="demo2">
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507807855177&di=e53e8b71e21e5d053686d42c94ce0a84&imgtype=0&src=http%3A%2F%2Ffile8.mafengwo.net%2FM00%2F0B%2F79%2FwKgByU_keruPuz_0AAmUMVpO5Vs88.groupinfo.w600.jpeg">
+		<figcaption>
+			<h2>旋转特效</h2>
+			<p>鼠标移入会有一个框旋转在图片上</p>
+			<div></div>
+		</figcaption>
+	</figure>
+	<figure class="demo3">
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507806918319&di=2a638dd5989c091f3f748d0fb4f779c7&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fa8ec8a13632762d0352ace85abec08fa513dc6f0.jpg">
+		<figcaption>
+			<h2>缩放特效</h2>
+			<p>鼠标移入图片会放大</p>
+			<div></div>
+		</figcaption>
+	</figure>
+	
+	<figure class="demo4">
+		<img src="http://imgsrc.baidu.com/imgad/pic/item/d009b3de9c82d1586e78979c8b0a19d8bc3e4221.jpg">
+		<figcaption>
+			<h2>显示更多</h2>
+			<p>鼠标移入会显示隐藏信息</p>
+			<div></div>
+		</figcaption>
+		
+	</figure>
+
+	</body>
+</html>

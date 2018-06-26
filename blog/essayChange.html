@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>内容转换</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Optometry Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+ <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    
+<!-- js -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/moment-with-locales.js"></script>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="js/common.js"></script>
+<script src="datas/select.js"></script>
+<script src="datas/notes.js"></script>
+<!-- //js -->
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+</head>
+	
+<body>
+<!-- header -->
+	<div id="header"></div>
+<!-- //header -->
+<!-- banner -->
+<!-- //banner -->
+<!-- blog -->
+	<div class="blog">
+		<div class="container">
+			<div class="col-md-12 blog-left" id="notes">
+				<div class="blog-left-grid">
+					
+					<h3 class="bars">内容转换</h3>
+					<div class="input-group">
+						<span class="input-group-addon" >标题</span>
+						<input id="title" type="text" class="form-control" placeholder="此处输入标题" aria-describedby="basic-addon1">
+					</div>
+				
+					<div class="input-group">
+						<span class="input-group-addon" >作者</span>
+						<input id="user" type="text" class="form-control" placeholder="此处输入作者" aria-describedby="basic-addon1">
+					</div>
+
+					<a class='input-group date' id='datetimepicker1'>		
+						<span class="input-group-addon" id="basic-addon1">日期</span>
+						<input type='text' class="form-control" id='time' placeholder="此处选择日期"/>
+						<span class="input-group-addon" >
+							<span class="glyphicon glyphicon-calendar"></span>
+						</span>
+					</a>	
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">标签</span>
+						<select class="form-control" id="tags">
+							<option value="">此处选择标签</option>
+							
+						</select>
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">内容</span>
+						<textarea class="form-control" rows="10"  placeholder="此处输入内容,标题处使用#！和！#标记，示例 : !#我是标题！#" id="content"></textarea>
+					</div>
+					<div class="input-group">
+						<input type='button' class="form-control" id='nowdate' onclick="change()" value="JSON转换"/>
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1" >结果</span>
+						<textarea class="form-control" rows="15" placeholder="转换后获得结果" id="result"></textarea>
+					</div>
+				</div>
+			</div>			
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //blog -->
+<!-- footer -->
+	<div id="footer"></div>
+<!--//footer-->
+<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" 
+							aria-hidden="true">×
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						提示信息
+					</h4>
+				</div>
+				<div class="modal-body">
+					必须输入有效值转换
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">
+						确定
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"> </script>
+	<script src="datas/notes.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			 date();
+			 initSelect();
+		});
+		/**日期控件*/
+		function date(){
+			$('#datetimepicker1').datetimepicker({
+				language: 'zh-CN',//显示中文
+				format: 'yyyy-mm-dd',//显示格式
+				minView: "month",//设置只显示到月份
+				initialDate: new Date(),
+				autoclose: true,//选中自动关闭
+				todayBtn: true,//显示今日按钮
+				locale: moment.locale('zh-cn')
+			});
+		}
+		/**初始化下拉框*/
+		function initSelect(){
+			var html = []; 
+		    for(var i=0;i<tags.length;i++){
+				html.push('<option value="'+tags[i].id+'">'+tags[i].text+'</option>');
+		    }
+		    $('#tags').append(html.join());
+		
+		
+		}
+		
+		/**内容转换*/
+		function change(){
+			
+			var json = [];
+			var title = $("#title").val();
+			var user = $("#user").val();
+			var time = $("#time").val();
+			var tag = $("#tags").val();
+			if(title != null && title != '' &&
+			   user != null && user != '' &&
+			   time != null && time != '' &&
+			   tag != null && tag != '' ){
+				var content = $("#content").val().split("'").join('"').replace(/\n/g,'*');
+				json.push("id:'"+notes.length+"'");
+				json.push("title:'"+title+"'");
+				json.push("user:'"+user+"'");
+				json.push("num:'10'");
+				json.push("time:'"+time+"'");
+				json.push("tags:'"+tag+"'");
+				json.push("content:'"+content+"'");
+			
+				var result = "{"+json.join(",")+"}";
+				$("#result").val(result);
+			}else{
+				$("#myModal").modal('show');
+			}
+		
+		}
+		
+	</script>
+<!-- //for bootstrap working -->
+</body>
+</html>
