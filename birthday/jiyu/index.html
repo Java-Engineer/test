@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset='utf-8'>
+  <title>祝福寄语</title>
+  <link rel='stylesheet' href='style/style.css' />
+ </head>
+ <body>
+  <h1 style="color:#FFF;margin-left:30%;margin-top:100px;" id='divTyping'></h1>
+  <script>
+   var str = '一个喜欢美食的女生；</br>一个喜欢夹娃娃的女生；</br>一个喜欢看综艺的女生；</br>一个喜欢发哈哈哈的女生；</br>一个不喜欢吃太辣的女生；</br>一个打游戏比较厉害的女生；</br>一个喜欢收藏表情包的女生；</br>祝你生日快乐，哈哈哈</br>--徐先生';
+   var i = 0;
+   function typing(){
+    var divTyping = document.getElementById('divTyping');
+    if (i <= str.length) {
+     divTyping.innerHTML = str.slice(0, i++) + '_';
+     setTimeout('typing()', 200);//递归调用
+    }
+    else{
+     divTyping.innerHTML = str;//结束打字,移除 _ 光标
+    }
+   }
+   window.onload = function(){
+  //要执行的js代码段 
+typing();  
+	}
+   
+  </script>
+ </body>
+</html>
